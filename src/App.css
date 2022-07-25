@@ -36,3 +36,16 @@
     transform: rotate(360deg);
   }
 }
+
+
+/* --------------------------- */
+
+.goalBody, .pouroverBody, .addAmount {
+  margin-top: 3em;
+}
+
+.secondHeader {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
