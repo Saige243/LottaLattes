@@ -34,18 +34,37 @@ function App() {
 
     // convert string to number, throw on todaySavedArr
     const converted = parseInt(today)
-    setTodaySaved(todaySaved.concat(converted))
+    const newTodaySaved = todaySaved.concat(converted)
+    const newTodaySum = newTodaySaved.reduce((a, b) => a + b)
+    const newWeeklyRemainder = parseInt(goal) - newTodaySum
+    let newPourover
+    if (newWeeklyRemainder < 0) {
+      newPourover = Math.abs(newWeeklyRemainder)
+    }
+
+    setTodaySaved(newTodaySaved)
+    setTodaySum(newTodaySum)
+    setWeeklyRemainder(newWeeklyRemainder)
+    setPourover(newPourover)
+
+    // setTodaySaved(todaySaved.concat(converted))
 
   }
 
-  useEffect(() => {
-    // add array numbers for saved today
-    setTodaySum(todaySaved.reduce((a, b) => a + b))
+  // useEffect(() => {
+  //   // add array numbers for saved today
+  //   setTodaySum(todaySaved.reduce((a, b) => a + b))
 
-    // subtract goal and today for remainder
-    setWeeklyRemainder(parseInt(goal) - todaySum)
+  //   if (weeklyRemainder < 0) {
+  //     const remainder = Math.abs(weeklyRemainder)
+  //     debugger
+  //     setPourover(remainder)
+  //   }
 
-  }, [todaySaved, todaySum, amountSavedFunction, weeklyRemainder])
+  //   // subtract goal and today for remainder
+  //   setWeeklyRemainder(parseInt(goal) - todaySum)
+
+  // }, [todaySaved, todaySum, amountSavedFunction, weeklyRemainder])
 
 
   return (
@@ -110,6 +129,7 @@ function App() {
           {!pourover &&
             <span>Keep saving! 🫡</span>
           }
+          {pourover}
         </div>
       </div>
 
