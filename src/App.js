@@ -47,25 +47,7 @@ function App() {
     setWeeklyRemainder(newWeeklyRemainder)
     setPourover(newPourover)
 
-    // setTodaySaved(todaySaved.concat(converted))
-
   }
-
-  // useEffect(() => {
-  //   // add array numbers for saved today
-  //   setTodaySum(todaySaved.reduce((a, b) => a + b))
-
-  //   if (weeklyRemainder < 0) {
-  //     const remainder = Math.abs(weeklyRemainder)
-  //     debugger
-  //     setPourover(remainder)
-  //   }
-
-  //   // subtract goal and today for remainder
-  //   setWeeklyRemainder(parseInt(goal) - todaySum)
-
-  // }, [todaySaved, todaySum, amountSavedFunction, weeklyRemainder])
-
 
   return (
     <div className="App">
@@ -99,8 +81,6 @@ function App() {
               </FormControl>
             </>
           }
-
-
           {
             goal &&
             <>
@@ -157,7 +137,6 @@ function App() {
           </Button>
         </FormControl>
       </div>
-
 
       <div className="savedLattes">
         <h4>Saved today:</h4>
