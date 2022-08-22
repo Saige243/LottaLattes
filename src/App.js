@@ -51,10 +51,10 @@ function App() {
 
   }
 
-  useEffect(() => {
-    console.log('loaded')
+  // useEffect(() => {
+  //   console.log('loaded')
 
-  }, [amountSavedFunction, setGoalFunction, weeklyRemainder])
+  // }, [amountSavedFunction, setGoalFunction, weeklyRemainder, todaySum])
 
   return (
     <div className="App">
@@ -147,7 +147,7 @@ function App() {
 
       <div className="savedLattes">
         <h4>Saved today:</h4>
-        <span>${todaySum}</span>
+        <span>{todaySum > 0 ? <span>${todaySum}</span> : <span>Enter your number above!</span>}</span>
         <h4>Weekly remainder:</h4>
         <span>{goal > 0 ? <span>{`$${weeklyRemainder}`}</span> : <span>Set a goal above!</span>}</span>
         <h2>Lattes saved:</h2>
