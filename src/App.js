@@ -24,6 +24,7 @@ function App() {
 
   const setGoalFunction = () => {
     setGoal(amount)
+    setWeeklyRemainder(amount)
   }
 
   const amountSavedFunction = () => {
@@ -37,6 +38,7 @@ function App() {
     const newTodaySaved = todaySaved.concat(converted)
     const newTodaySum = newTodaySaved.reduce((a, b) => a + b)
     const newWeeklyRemainder = parseInt(goal) - newTodaySum
+
     let newPourover
     if (newWeeklyRemainder < 0) {
       newPourover = Math.abs(newWeeklyRemainder)
@@ -48,6 +50,11 @@ function App() {
     setPourover(newPourover)
 
   }
+
+  useEffect(() => {
+    console.log('loaded')
+
+  }, [amountSavedFunction, setGoalFunction, weeklyRemainder])
 
   return (
     <div className="App">
@@ -142,7 +149,7 @@ function App() {
         <h4>Saved today:</h4>
         <span>${todaySum}</span>
         <h4>Weekly remainder:</h4>
-        <span>${goal && <span>{weeklyRemainder}</span>}</span>
+        <span>{goal > 0 ? <span>{`$${weeklyRemainder}`}</span> : <span>Set a goal above!</span>}</span>
         <h2>Lattes saved:</h2>
         <span>{listLattes}</span>
       </div>
