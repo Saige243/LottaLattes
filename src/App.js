@@ -1,65 +1,66 @@
-import './App.css';
-import TextField from '@mui/material/TextField'
-import FormControl from '@mui/material/FormControl';
-import Button from '@mui/material/Button'
-import LocalDrinkIcon from '@mui/icons-material/LocalDrink';
+import "./App.css";
+import TextField from "@mui/material/TextField";
+import FormControl from "@mui/material/FormControl";
+import Button from "@mui/material/Button";
+import LocalDrinkIcon from "@mui/icons-material/LocalDrink";
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from "react";
 
 function App() {
-  const [goal, setGoal] = useState('')
-  const [amount, setAmount] = useState('')
+  const [goal, setGoal] = useState("");
+  const [amount, setAmount] = useState("");
   // set the 'extra' amount
-  const [pourover, setPourover] = useState('')
-  const [today, setToday] = useState('')
-  const [latteArr, setLatteArr] = useState([])
-  const [todaySaved, setTodaySaved] = useState([0])
-  const [todaySum, setTodaySum] = useState()
-  const [weeklyRemainder, setWeeklyRemainder] = useState(0)
+  const [pourover, setPourover] = useState("");
+  const [today, setToday] = useState("");
+  const [latteArr, setLatteArr] = useState([]);
+  const [todaySaved, setTodaySaved] = useState([0]);
+  const [todaySum, setTodaySum] = useState();
+  const [weeklyRemainder, setWeeklyRemainder] = useState(0);
 
-  const [savedTodayInput, setTodaySavedInput] = useState()
+  const [savedTodayInput, setSavedTodayInput] = useState();
 
-
-  const listLattes = latteArr.map(() =>
-    <span><LocalDrinkIcon /></span>
-  )
+  const listLattes = latteArr.map(() => (
+    <span>
+      <LocalDrinkIcon />
+    </span>
+  ));
 
   const setGoalFunction = () => {
-    setGoal(amount)
-    setWeeklyRemainder(amount)
+    setGoal(amount);
+    setWeeklyRemainder(amount);
+  };
+
+  function handleChange(e) {
+    const v = e.target.value
+    setToday(v)
+    setSavedTodayInput(v)
   }
 
   const amountSavedFunction = () => {
     // show latte icons
     if (today >= 6) {
-      setLatteArr([...latteArr, <LocalDrinkIcon />])
+      setLatteArr([...latteArr, <LocalDrinkIcon />]);
     }
 
     // convert string to number, throw on todaySavedArr
-    const converted = parseInt(today)
-    const newTodaySaved = todaySaved.concat(converted)
-    const newTodaySum = newTodaySaved.reduce((a, b) => a + b)
-    const newWeeklyRemainder = parseInt(goal) - newTodaySum
+    const converted = parseInt(today);
+    const newTodaySaved = todaySaved.concat(converted);
+    const newTodaySum = newTodaySaved.reduce((a, b) => a + b);
+    const newWeeklyRemainder = parseInt(goal) - newTodaySum;
 
-    let newPourover
+    let newPourover;
     if (newWeeklyRemainder < 0) {
-      newPourover = Math.abs(newWeeklyRemainder)
+      newPourover = Math.abs(newWeeklyRemainder);
     }
 
-    setTodaySaved(newTodaySaved)
-    setTodaySum(newTodaySum)
-    setWeeklyRemainder(newWeeklyRemainder)
-    setPourover(newPourover)
+    setTodaySaved(newTodaySaved);
+    setTodaySum(newTodaySum);
+    setWeeklyRemainder(newWeeklyRemainder);
+    setPourover(newPourover);
 
-    // clear 'Amount Saved' input field
-    setTodaySavedInput('')
-
-  }
-
-  // useEffect(() => {
-  //   console.log('loaded')
-
-  // }, [amountSavedFunction, setGoalFunction, weeklyRemainder, todaySum])
+    setSavedTodayInput('')
+    
+  };
 
   return (
     <div className="App">
@@ -70,7 +71,7 @@ function App() {
 
       <div className="secondHeader">
         <div className="goalBody">
-          {!goal &&
+          {!goal && (
             <>
               <h2>What's your weekly goal?</h2>
               <FormControl>
@@ -84,47 +85,47 @@ function App() {
                 />
                 <Button
                   sx={{
-                    marginTop: 1
+                    marginTop: 1,
                   }}
                   size="small"
                   variant="outlined"
                   onClick={setGoalFunction}
-                >Set Goal</Button>
+                >
+                  Set Goal
+                </Button>
               </FormControl>
             </>
-          }
-          {
-            goal &&
+          )}
+          {goal && (
             <>
               <h3> GOAL:</h3>
-              <span><strong>${goal}</strong></span> <br />
+              <span>
+                <strong>${goal}</strong>
+              </span>{" "}
+              <br />
             </>
-          }
-          {goal &&
+          )}
+          {goal && (
             <Button
               sx={{
-                marginTop: 1
+                marginTop: 1,
               }}
               size="small"
               variant="outlined"
-              onClick={(e) => setGoal('')}
+              onClick={(e) => setGoal("")}
             >
               Change Goal
-      </Button>
-          }
+            </Button>
+          )}
         </div>
-
 
         <div className="pouroverBody">
           <h3>POUROVER:</h3>
           <h4>(Any $ over your goal)</h4>
-          {!pourover &&
-            <span>Keep saving! 🫡</span>
-          }
+          {!pourover && <span>Keep saving! 🫡</span>}
           {pourover}
         </div>
       </div>
-
 
       <div className="addAmount">
         <FormControl>
@@ -136,11 +137,12 @@ function App() {
             size="medium"
             maxRows={8}
             value={savedTodayInput}
-            onChange={(e) => setToday(e.target.value)}
+            // onChange={(e) => setToday(e.target.value)}
+            onChange={handleChange}
           />
           <Button
             sx={{
-              marginTop: 1
+              marginTop: 1,
             }}
             size="small"
             variant="outlined"
@@ -153,12 +155,34 @@ function App() {
 
       <div className="savedLattes">
         <h4>Saved today:</h4>
-        <span>{todaySum > 0 ? <span>${todaySum}</span> : <span>Enter your number above!</span>}</span>
+        <span>
+          {todaySum > 0 ? (
+            <span>${todaySum}</span>
+          ) : (
+            <span>Enter your number above!</span>
+          )}
+        </span>
         <h4>Weekly remainder:</h4>
-        <span>{goal > 0 ? <span>{`$${weeklyRemainder}`}</span> : <span>Set a goal above!</span>}</span>
-        <h2>Lattes saved:</h2>
-        <span>{listLattes}</span>
+        <span>
+          {goal > 0 ? (
+            <span>{`$${weeklyRemainder}`}</span>
+          ) : (
+            <span>Set a goal above!</span>
+          )}
+        </span>
       </div>
+        <div className="lattesSaved">
+          <h2>Lattes saved:</h2>
+          <span>
+            {/* {latteArr.length > 0 ?(
+              {listLattes}
+            ) : (
+              <span>Hmm, nothing saved yet!</span>
+            )
+            } */}
+            {listLattes}
+          </span>
+        </div>
     </div>
   );
 }

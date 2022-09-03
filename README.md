@@ -1,6 +1,6 @@
 # A lightning-coded savings app focused on coffee.
-## Bottoms up!
 
+## Bottoms up!
 
 # Getting Started with Create React App
 
