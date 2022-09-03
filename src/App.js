@@ -17,6 +17,8 @@ function App() {
   const [todaySum, setTodaySum] = useState()
   const [weeklyRemainder, setWeeklyRemainder] = useState(0)
 
+  const [savedTodayInput, setTodaySavedInput] = useState()
+
 
   const listLattes = latteArr.map(() =>
     <span><LocalDrinkIcon /></span>
@@ -48,6 +50,9 @@ function App() {
     setTodaySum(newTodaySum)
     setWeeklyRemainder(newWeeklyRemainder)
     setPourover(newPourover)
+
+    // clear 'Amount Saved' input field
+    setTodaySavedInput('')
 
   }
 
@@ -130,6 +135,7 @@ function App() {
             multiline
             size="medium"
             maxRows={8}
+            value={savedTodayInput}
             onChange={(e) => setToday(e.target.value)}
           />
           <Button
