@@ -15,7 +15,6 @@ function App() {
   const [todaySaved, setTodaySaved] = useState([0]);
   const [weekSaved, setWeekSaved] = useState();
   const [weeklyRemainder, setWeeklyRemainder] = useState(0);
-
   const [savedTodayInput, setSavedTodayInput] = useState();
 
   const listLattes = latteArr.map(() => (
@@ -33,6 +32,11 @@ function App() {
     const v = e.target.value
     setToday(v)
     setSavedTodayInput(v)
+  }
+
+  function handleGoalChange(){
+    setGoal("")
+    setPourover("")
   }
 
   const amountSavedFunction = () => {
@@ -112,7 +116,7 @@ function App() {
               }}
               size="small"
               variant="outlined"
-              onClick={(e) => setGoal("")}
+              onClick={handleGoalChange}
             >
               Change Goal
             </Button>
@@ -122,8 +126,10 @@ function App() {
         <div className="pouroverBody">
           <h3>POUROVER:</h3>
           <h4>(Any $ over your goal)</h4>
-          {!pourover && <span>Keep saving! 🫡</span>}
-          {pourover}
+          {!pourover ? (<span>🫡 Keep saving!🫡</span>
+          ) : (
+            <p>{`$${pourover}`}</p>
+          )}
         </div>
       </div>
 
@@ -161,26 +167,29 @@ function App() {
             <span>Enter your number above!</span>
           )}
         </span>
+
         <h4>Weekly remainder:</h4>
         <span>
-          {goal > 0 ? (
+          {weeklyRemainder >= 1 &&
             <span>{`$${weeklyRemainder}`}</span>
-          ) : (
+          } 
+          {weeklyRemainder < 1 && !pourover && 
             <span>Set a goal above!</span>
-          )}
+          }
+          {weeklyRemainder < 1 && pourover &&
+            <p>🥳YOU DID IT!🥳</p>
+          }
         </span>
       </div>
+
         <div className="lattesSaved">
           <h2>Lattes saved:</h2>
-          <span>
-            {/* {latteArr.length > 0 ?(
-              {listLattes}
+            {latteArr.length > 0 ?(
+              <span>{listLattes}</span>
             ) : (
-              <span>Hmm, nothing saved yet!</span>
+              <p>Hmm, no lattes yet!</p>
             )
-            } */}
-            {listLattes}
-          </span>
+            }
         </div>
     </div>
   );
