@@ -4,7 +4,10 @@ import FormControl from "@mui/material/FormControl";
 import Button from "@mui/material/Button";
 import LocalDrinkIcon from "@mui/icons-material/LocalDrink";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { LocalConvenienceStoreOutlined } from "@mui/icons-material";
+import { toHaveTextContent } from "@testing-library/jest-dom/dist/matchers";
+import useEnhancedEffect from "@mui/material/utils/useEnhancedEffect";
 
 function App() {
   const [goal, setGoal] = useState("");
@@ -40,10 +43,10 @@ function App() {
   }
 
   const amountSavedFunction = () => {
-    // show latte icons
-    if (today >= 6) {
-      setLatteArr([...latteArr, <LocalDrinkIcon />]);
-    }
+    // show latte icons equation
+    // if (today >= 6) {
+    //   setLatteArr([...latteArr, <LocalDrinkIcon />]);
+    // }
 
     // convert string to number, throw on todaySavedArr
     const converted = parseInt(today);
@@ -58,13 +61,22 @@ function App() {
 
     setTodaySaved(newTodaySaved);
     setWeekSaved(newWeekSum);
-    // setWeekSaved(newTodaySaved)
     setWeeklyRemainder(newWeeklyRemainder);
     setPourover(newPourover);
 
     setSavedTodayInput('')
     
   };
+
+  useEffect(() => {
+    let latteCost = 6;
+    let totes = (weekSaved / latteCost)
+
+    if (latteArr.length > 0) {
+      setLatteArr([...latteArr(totes), <LocalDrinkIcon />]);
+    }
+
+  }, [weekSaved, latteArr])
 
   return (
     <div className="App">
@@ -126,7 +138,8 @@ function App() {
         <div className="pouroverBody">
           <h3>POUROVER:</h3>
           <h4>(Any $ over your goal)</h4>
-          {!pourover ? (<span>🫡 Keep saving!🫡</span>
+          {!pourover ? (
+            <span>🫡 Keep saving!🫡</span>
           ) : (
             <p>{`$${pourover}`}</p>
           )}
