@@ -4,17 +4,16 @@ import FormControl from "@mui/material/FormControl";
 import Button from "@mui/material/Button";
 import LocalDrinkIcon from "@mui/icons-material/LocalDrink";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 function App() {
   const [goal, setGoal] = useState("");
   const [amount, setAmount] = useState("");
-  // set the 'extra' amount
   const [pourover, setPourover] = useState("");
   const [today, setToday] = useState("");
   const [latteArr, setLatteArr] = useState([]);
   const [todaySaved, setTodaySaved] = useState([0]);
-  const [todaySum, setTodaySum] = useState();
+  const [weekSaved, setWeekSaved] = useState();
   const [weeklyRemainder, setWeeklyRemainder] = useState(0);
 
   const [savedTodayInput, setSavedTodayInput] = useState();
@@ -45,8 +44,8 @@ function App() {
     // convert string to number, throw on todaySavedArr
     const converted = parseInt(today);
     const newTodaySaved = todaySaved.concat(converted);
-    const newTodaySum = newTodaySaved.reduce((a, b) => a + b);
-    const newWeeklyRemainder = parseInt(goal) - newTodaySum;
+    const newWeekSum = newTodaySaved.reduce((a, b) => a + b);
+    const newWeeklyRemainder = parseInt(goal) - newWeekSum;
 
     let newPourover;
     if (newWeeklyRemainder < 0) {
@@ -54,7 +53,8 @@ function App() {
     }
 
     setTodaySaved(newTodaySaved);
-    setTodaySum(newTodaySum);
+    setWeekSaved(newWeekSum);
+    // setWeekSaved(newTodaySaved)
     setWeeklyRemainder(newWeeklyRemainder);
     setPourover(newPourover);
 
@@ -137,7 +137,6 @@ function App() {
             size="medium"
             maxRows={8}
             value={savedTodayInput}
-            // onChange={(e) => setToday(e.target.value)}
             onChange={handleChange}
           />
           <Button
@@ -154,10 +153,10 @@ function App() {
       </div>
 
       <div className="savedLattes">
-        <h4>Saved today:</h4>
+        <h4>Saved this week:</h4>
         <span>
-          {todaySum > 0 ? (
-            <span>${todaySum}</span>
+          {weekSaved > 0 ? (
+            <span>${weekSaved}</span>
           ) : (
             <span>Enter your number above!</span>
           )}
