@@ -80,7 +80,7 @@ function App() {
         <div className="goalBody">
           {!goal && (
             <>
-              <h2>What's your weekly goal?</h2>
+              <h2>WEEKLY GOAL:</h2>
               <FormControl>
                 <TextField
                   id="outlined-multiline-flexible"
@@ -152,7 +152,7 @@ function App() {
         </div>
 
         <div className="pouroverBody">
-          <h3>POUROVER:</h3>
+          <h2>POUROVER:</h2>
           <h4>(Any $ over your goal)</h4>
           {!pourover ? <span>🫡 Keep saving!🫡</span> : <p>{`$${pourover}`}</p>}
         </div>
