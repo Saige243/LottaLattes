@@ -41,7 +41,12 @@
 }
 
 .savedLattes {
-  padding-bottom: 3em;
+  padding-bottom: 2em;
+}
+
+.weeklyRemainder {
+  padding-bottom: 2em;
+
 }
 
 .lattesSaved {
