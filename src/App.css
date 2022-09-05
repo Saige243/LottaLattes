@@ -10,7 +10,7 @@
 
 .secondHeader {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 
 @media only screen and (max-width: 800px) {
@@ -28,11 +28,11 @@
 
 @media only screen and (min-width: 800px) {
   .goalBody {
-    padding-left: 12em;
+    padding-left: 10em;
   }
 
   .pouroverBody {
-    padding-right: 12em;
+    padding-right: 10em;
   }
 }
 

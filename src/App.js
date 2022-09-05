@@ -39,11 +39,6 @@ function App() {
   }
 
   const amountSavedFunction = () => {
-    // show latte icons equation
-    // if (today >= 6) {
-    //   setLatteArr([...latteArr, <LocalDrinkIcon />]);
-    // }
-
     // convert string to number, throw on todaySavedArr
     const converted = parseInt(today);
     const newTodaySaved = todaySaved.concat(converted);
@@ -66,7 +61,6 @@ function App() {
 
   useEffect(() => {
     let totes = Math.floor(weekSaved / 6)
-    console.log(totes)
 
     if(latteArr.length !== totes){
       for (let i = 0; i <= totes; i++) {
@@ -135,18 +129,7 @@ function App() {
           )}
         </div>
 
-        <div className="pouroverBody">
-          <h3>POUROVER:</h3>
-          <h4>(Any $ over your goal)</h4>
-          {!pourover ? (
-            <span>🫡 Keep saving!🫡</span>
-          ) : (
-            <p>{`$${pourover}`}</p>
-          )}
-        </div>
-      </div>
-
-      <div className="addAmount">
+        <div className="addAmount">
         <FormControl>
           <h2>SAVED TODAY:</h2>
           <TextField
@@ -169,6 +152,17 @@ function App() {
             Get that latte!
           </Button>
         </FormControl>
+      </div>
+
+        <div className="pouroverBody">
+          <h3>POUROVER:</h3>
+          <h4>(Any $ over your goal)</h4>
+          {!pourover ? (
+            <span>🫡 Keep saving!🫡</span>
+          ) : (
+            <p>{`$${pourover}`}</p>
+          )}
+        </div>
       </div>
 
       <div className="savedLattes">
