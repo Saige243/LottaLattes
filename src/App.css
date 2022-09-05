@@ -11,29 +11,22 @@
 .secondHeader {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  padding-left: 10%;
+  padding-right: 10%;
 }
 
 @media only screen and (max-width: 800px) {
   .secondHeader {
     grid-template-columns: 1fr;
   }
-  .goalBody {
-    padding-left: 0px;
-  }
-
-  .pouroverBody {
-    padding-right: 0px;
-  }
 }
 
-@media only screen and (min-width: 800px) {
-  .goalBody {
-    padding-left: 10em;
-  }
+.goalBody {
+  text-align: center;
+}
 
-  .pouroverBody {
-    padding-right: 10em;
-  }
+.pouroverBody {
+  text-align: center;
 }
 
 .addAmount {
