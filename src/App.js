@@ -65,12 +65,16 @@ function App() {
   };
 
   useEffect(() => {
-    let latteCost = 6;
-    let totes = (weekSaved / latteCost)
+    let totes = Math.floor(weekSaved / 6)
+    console.log(totes)
 
-    if (latteArr.length > 0) {
-      setLatteArr([...latteArr(totes), <LocalDrinkIcon />]);
+    if(latteArr.length !== totes){
+      for (let i = 0; i <= totes; i++) {
+        setLatteArr([...latteArr, <LocalDrinkIcon />]);
+        console.log('loaded')
+      }
     }
+    
 
   }, [weekSaved, latteArr])
 
