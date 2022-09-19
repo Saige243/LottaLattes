@@ -76,7 +76,7 @@ function App() {
         <h3>(Because coffee ain't cheap)</h3>
       </div>
 
-      <div className="grid grid-cols-2 place-items-center">
+      <div className="flex items-center flex-col sm:flex-row sm:justify-evenly">
         <div className="mt-4 sm:m-4 md:m-8 lg:m-12">
           {!goal && (
             <>
