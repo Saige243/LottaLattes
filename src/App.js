@@ -71,16 +71,16 @@ function App() {
 
   return (
     <div className="m-4">
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center my-6">
         <h1>☕️ LottaLattes ☕️</h1>
         <h3>(Because coffee ain't cheap)</h3>
       </div>
 
       <div className="flex items-center flex-col sm:flex-row sm:justify-evenly">
-        <div className="mt-4 sm:m-4 md:m-8 lg:m-12">
+        <div className="text-center mt-4 sm:m-4 md:m-8 lg:m-12">
           {!goal && (
             <>
-              <h2>WEEKLY GOAL:</h2>
+              <h2 className="underline font-bold">WEEKLY GOAL:</h2>
               <FormControl>
                 <TextField
                   id="outlined-multiline-flexible"
@@ -105,7 +105,7 @@ function App() {
           )}
           {goal && (
             <>
-              <h3> GOAL:</h3>
+              <h3 className="underline font-bold">GOAL:</h3>
               <span>
                 <strong>${goal}</strong>
               </span>{" "}
@@ -126,9 +126,9 @@ function App() {
           )}
         </div>
 
-        <div className="mt-4 sm:m-4 md:m-8 lg:m-12">
+        <div className="text-center mt-4 sm:m-4 md:m-8 lg:m-12">
           <FormControl>
-            <h2>SAVED TODAY:</h2>
+            <h2 className="m-2 underline font-bold">SAVED TODAY:</h2>
             <TextField
               id="outlined-multiline-flexible"
               label="Amount saved"
@@ -152,14 +152,14 @@ function App() {
         </div>
       </div>
 
-        <div className="pouroverBody">
-          <h2>POUROVER:</h2>
+        <div className="flex items-center flex-col my-12">
+          <h2 className="underline font-bold">POUROVER:</h2>
           <h4>(Any $ over your goal)</h4>
           {!pourover ? <span>🫡 Keep saving!🫡</span> : <p>{`$${pourover}`}</p>}
         </div>
 
-      <div className="savedLattes">
-        <h4>Saved this week:</h4>
+      <div className="flex items-center flex-col my-12">
+        <h4 className="underline font-bold">Saved this week:</h4>
         <span>
           {weekSaved > 0 ? (
             <span>${weekSaved}</span>
@@ -169,8 +169,8 @@ function App() {
         </span>
       </div>
 
-      <div className="weeklyRemainder">
-        <h4>Weekly remainder:</h4>
+      <div className="flex items-center flex-col my-12">
+        <h4 className="underline font-bold">Weekly remainder:</h4>
         <span>
           {weeklyRemainder >= 1 && <span>{`$${weeklyRemainder}`}</span>}
           {weeklyRemainder < 1 && !pourover && <span>Set a goal above!</span>}
@@ -178,8 +178,8 @@ function App() {
         </span>
       </div>
 
-      <div className="lattesSaved">
-        <h2>Lattes saved:</h2>
+      <div className="flex items-center flex-col my-4">
+        <h2 className="underline font-bold">Lattes saved:</h2>
         {latteArr.length > 0 ? (
           <span>{listLattes}</span>
         ) : (
