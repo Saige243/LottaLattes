@@ -70,14 +70,14 @@ function App() {
   }, [weekSaved, latteArr])
 
   return (
-    <div className="m-4">
-      <div className="flex flex-col items-center my-6">
-        <h1 className="logo text-blue-600 text-2xl">☕️ LottaLattes ☕️</h1>
+    <div className="h-screen w-screen bg-slate-100">
+      <div className="flex flex-col items-center">
+        <h1 className="logo text-blue-600 text-2xl my-6">☕️ LottaLattes ☕️</h1>
         <h3>(Because coffee ain't cheap)</h3>
       </div>
 
       <div className="flex items-center flex-col sm:flex-row sm:justify-evenly sm:mx-32">
-        <div className="text-center mt-4 sm:m-4 md:m-8 lg:m-12">
+        <div className="mt-4 sm:m-4 md:m-8 lg:m-12 p-8 rounded bg-white drop-shadow-xl text-center">
           {!goal && (
             <>
               <h2 className="underline text-blue-600 font-bold m-2">WEEKLY GOAL:</h2>
@@ -127,7 +127,7 @@ function App() {
           )}
         </div>
 
-        <div className="text-center mt-4 sm:m-4 md:m-8 lg:m-12">
+        <div className="mt-4 sm:m-4 md:m-8 lg:m-12 p-8 rounded bg-white drop-shadow-xl text-center">
           <FormControl>
             <h2 className="m-2 underline font-bold text-blue-600">SAVED TODAY:</h2>
             <TextField
@@ -153,13 +153,13 @@ function App() {
         </div>
       </div>
 
-        <div className="flex items-center flex-col my-12">
+        <div className="flex items-center flex-col my-12 p-8 rounded bg-white drop-shadow-xl">
           <h2 className="underline font-bold text-blue-600">POUROVER:</h2>
           <h4>(Any $ over your goal)</h4>
           {!pourover ? <span>🫡 Keep saving!🫡</span> : <p>{`$${pourover}`}</p>}
         </div>
 
-      <div className="flex items-center flex-col my-12">
+      <div className="flex items-center flex-col my-12 p-8 rounded bg-white drop-shadow-xl">
         <h4 className="underline font-bold text-blue-600">Saved this week:</h4>
         <span>
           {weekSaved > 0 ? (
@@ -170,7 +170,7 @@ function App() {
         </span>
       </div>
 
-      <div className="flex items-center flex-col my-12">
+      <div className="flex items-center flex-col my-12 p-8 rounded bg-white drop-shadow-xl">
         <h4 className="underline font-bold text-blue-600">Weekly remainder:</h4>
         <span>
           {weeklyRemainder >= 1 && <span>{`$${weeklyRemainder}`}</span>}
@@ -179,7 +179,7 @@ function App() {
         </span>
       </div>
 
-      <div className="flex items-center flex-col my-4">
+      <div className="flex items-center flex-col mb-12 p-8 rounded bg-white drop-shadow-xl">
         <h2 className="underline font-bold text-blue-600">Lattes saved:</h2>
         {latteArr.length > 0 ? (
           <span>{listLattes}</span>
