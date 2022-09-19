@@ -153,7 +153,7 @@ function App() {
         </div>
       </div>
 
-        <div className="flex items-center flex-col my-12 p-8 rounded bg-white drop-shadow-xl">
+        <div className="flex justify-center items-center flex-col my-12 p-8 rounded bg-white drop-shadow-xl w-1/2">
           <h2 className="underline font-bold text-blue-600">POUROVER:</h2>
           <h4>(Any $ over your goal)</h4>
           {!pourover ? <span>🫡 Keep saving!🫡</span> : <p>{`$${pourover}`}</p>}
