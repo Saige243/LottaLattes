@@ -70,14 +70,14 @@ function App() {
   }, [weekSaved, latteArr])
 
   return (
-    <div className="App">
-      <div className="header">
+    <div className="m-4">
+      <div className="flex flex-col items-center">
         <h1>☕️ LottaLattes ☕️</h1>
         <h3>(Because coffee ain't cheap)</h3>
       </div>
 
-      <div className="secondHeader">
-        <div className="goalBody">
+      <div className="grid grid-cols-2 place-items-center">
+        <div className="mt-4 sm:m-4 md:m-8 lg:m-12">
           {!goal && (
             <>
               <h2>WEEKLY GOAL:</h2>
@@ -126,7 +126,7 @@ function App() {
           )}
         </div>
 
-        <div className="addAmount">
+        <div className="mt-4 sm:m-4 md:m-8 lg:m-12">
           <FormControl>
             <h2>SAVED TODAY:</h2>
             <TextField
@@ -150,13 +150,13 @@ function App() {
             </Button>
           </FormControl>
         </div>
+      </div>
 
         <div className="pouroverBody">
           <h2>POUROVER:</h2>
           <h4>(Any $ over your goal)</h4>
           {!pourover ? <span>🫡 Keep saving!🫡</span> : <p>{`$${pourover}`}</p>}
         </div>
-      </div>
 
       <div className="savedLattes">
         <h4>Saved this week:</h4>
