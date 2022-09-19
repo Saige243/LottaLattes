@@ -72,15 +72,15 @@ function App() {
   return (
     <div className="m-4">
       <div className="flex flex-col items-center my-6">
-        <h1>☕️ LottaLattes ☕️</h1>
+        <h1 className="logo text-blue-600 text-2xl">☕️ LottaLattes ☕️</h1>
         <h3>(Because coffee ain't cheap)</h3>
       </div>
 
-      <div className="flex items-center flex-col sm:flex-row sm:justify-evenly">
+      <div className="flex items-center flex-col sm:flex-row sm:justify-evenly sm:mx-32">
         <div className="text-center mt-4 sm:m-4 md:m-8 lg:m-12">
           {!goal && (
             <>
-              <h2 className="underline font-bold">WEEKLY GOAL:</h2>
+              <h2 className="underline text-blue-600 font-bold m-2">WEEKLY GOAL:</h2>
               <FormControl>
                 <TextField
                   id="outlined-multiline-flexible"
@@ -105,7 +105,7 @@ function App() {
           )}
           {goal && (
             <>
-              <h3 className="underline font-bold">GOAL:</h3>
+              <h3 className="underline font-bold text-blue-600">GOAL:</h3>
               <span>
                 <strong>${goal}</strong>
               </span>{" "}
@@ -120,6 +120,7 @@ function App() {
               size="small"
               variant="outlined"
               onClick={handleGoalChange}
+              className="text-blue-600"
             >
               Change Goal
             </Button>
@@ -128,7 +129,7 @@ function App() {
 
         <div className="text-center mt-4 sm:m-4 md:m-8 lg:m-12">
           <FormControl>
-            <h2 className="m-2 underline font-bold">SAVED TODAY:</h2>
+            <h2 className="m-2 underline font-bold text-blue-600">SAVED TODAY:</h2>
             <TextField
               id="outlined-multiline-flexible"
               label="Amount saved"
@@ -153,13 +154,13 @@ function App() {
       </div>
 
         <div className="flex items-center flex-col my-12">
-          <h2 className="underline font-bold">POUROVER:</h2>
+          <h2 className="underline font-bold text-blue-600">POUROVER:</h2>
           <h4>(Any $ over your goal)</h4>
           {!pourover ? <span>🫡 Keep saving!🫡</span> : <p>{`$${pourover}`}</p>}
         </div>
 
       <div className="flex items-center flex-col my-12">
-        <h4 className="underline font-bold">Saved this week:</h4>
+        <h4 className="underline font-bold text-blue-600">Saved this week:</h4>
         <span>
           {weekSaved > 0 ? (
             <span>${weekSaved}</span>
@@ -170,7 +171,7 @@ function App() {
       </div>
 
       <div className="flex items-center flex-col my-12">
-        <h4 className="underline font-bold">Weekly remainder:</h4>
+        <h4 className="underline font-bold text-blue-600">Weekly remainder:</h4>
         <span>
           {weeklyRemainder >= 1 && <span>{`$${weeklyRemainder}`}</span>}
           {weeklyRemainder < 1 && !pourover && <span>Set a goal above!</span>}
@@ -179,7 +180,7 @@ function App() {
       </div>
 
       <div className="flex items-center flex-col my-4">
-        <h2 className="underline font-bold">Lattes saved:</h2>
+        <h2 className="underline font-bold text-blue-600">Lattes saved:</h2>
         {latteArr.length > 0 ? (
           <span>{listLattes}</span>
         ) : (
