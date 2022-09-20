@@ -75,7 +75,7 @@ function App() {
   }, [weekSaved, latteArr])
 
   return (
-    <div className="h-screen w-screen bg-slate-100">
+    <div className="h-100 bg-slate-100">
       <div className="flex flex-col items-center">
         <h1 className="logo text-blue-600 text-2xl my-6">☕️ LottaLattes ☕️</h1>
         <h3>(Because coffee ain't cheap)</h3>
@@ -168,6 +168,9 @@ function App() {
         ) : (
           <p>Hmm, no lattes yet!</p>
         )}
+      </div>
+      <div className="text-center pb-2">
+          <span>LottaLattes ©</span>
       </div>
     </div>
   )
