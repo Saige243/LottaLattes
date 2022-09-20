@@ -4,6 +4,8 @@ import FormControl from "@mui/material/FormControl"
 import Button from "@mui/material/Button"
 import LocalDrinkIcon from "@mui/icons-material/LocalDrink"
 import { useState, useEffect } from "react"
+import SetGoalComp from "./components/setGoalComp"
+import ChangeGoalComp from "./components/changeGoalComp"
 
 function App() {
   const [goal, setGoal] = useState("")
@@ -16,11 +18,15 @@ function App() {
   const [weeklyRemainder, setWeeklyRemainder] = useState(0)
   const [savedTodayInput, setSavedTodayInput] = useState()
 
-  const listLattes = latteArr.map(() => (
+  const listLattes = latteArr.map((latte) => (
     <span>
-      <LocalDrinkIcon />
+      <LocalDrinkIcon key={latte.id}/>
     </span>
   ))
+
+  const handleAmountChange = (e) => {
+    setAmount(e.target.value)
+  }
 
   const setGoalFunction = () => {
     setGoal(amount)
@@ -64,13 +70,12 @@ function App() {
     if (latteArr.length !== totes) {
       for (let i = 0; i <= totes; i++) {
         setLatteArr([...latteArr, <LocalDrinkIcon />])
-        console.log("loaded")
       }
     }
   }, [weekSaved, latteArr])
 
   return (
-    <div className="h-screen w-screen bg-slate-100">
+    <div className="h-100 bg-slate-100">
       <div className="flex flex-col items-center">
         <h1 className="logo text-blue-600 text-2xl my-6">☕️ LottaLattes ☕️</h1>
         <h3>(Because coffee ain't cheap)</h3>
@@ -79,29 +84,10 @@ function App() {
       <div className="flex items-center flex-col sm:flex-row sm:justify-evenly sm:mx-32">
         <div className="mt-4 sm:m-4 md:m-8 lg:m-12 p-8 rounded bg-white drop-shadow-xl text-center">
           {!goal && (
-            <>
-              <h2 className="underline text-blue-600 font-bold m-2">WEEKLY GOAL:</h2>
-              <FormControl>
-                <TextField
-                  id="outlined-multiline-flexible"
-                  label="Goal"
-                  multiline
-                  size="medium"
-                  maxRows={8}
-                  onChange={(e) => setAmount(e.target.value)}
-                />
-                <Button
-                  sx={{
-                    marginTop: 1,
-                  }}
-                  size="small"
-                  variant="outlined"
-                  onClick={setGoalFunction}
-                >
-                  Set Goal
-                </Button>
-              </FormControl>
-            </>
+            <SetGoalComp 
+              onChange={handleAmountChange}
+              onClick={setGoalFunction}
+            />
           )}
           {goal && (
             <>
@@ -113,23 +99,17 @@ function App() {
             </>
           )}
           {goal && (
-            <Button
-              sx={{
-                marginTop: 1,
-              }}
-              size="small"
-              variant="outlined"
+            <ChangeGoalComp 
               onClick={handleGoalChange}
-              className="text-blue-600"
-            >
-              Change Goal
-            </Button>
+            />
           )}
         </div>
 
         <div className="mt-4 sm:m-4 md:m-8 lg:m-12 p-8 rounded bg-white drop-shadow-xl text-center">
           <FormControl>
-            <h2 className="m-2 underline font-bold text-blue-600">SAVED TODAY:</h2>
+            <h2 className="m-2 underline font-bold text-blue-600">
+              SAVED TODAY:
+            </h2>
             <TextField
               id="outlined-multiline-flexible"
               label="Amount saved"
@@ -153,13 +133,14 @@ function App() {
         </div>
       </div>
 
-        <div className="flex justify-center items-center flex-col my-12 p-8 rounded bg-white drop-shadow-xl w-1/2">
-          <h2 className="underline font-bold text-blue-600">POUROVER:</h2>
-          <h4>(Any $ over your goal)</h4>
-          {!pourover ? <span>🫡 Keep saving!🫡</span> : <p>{`$${pourover}`}</p>}
-        </div>
+      <div className="m-20 p-8 rounded bg-white drop-shadow-xl text-center">
+        <h2 className="underline font-bold text-blue-600">POUROVER:</h2>
+        <h4>(Any $ over your goal)</h4>
+        {!pourover ? <span>🫡 Keep saving!🫡</span> : <p>{`$${pourover}`}</p>}
+      </div>
 
-      <div className="flex items-center flex-col my-12 p-8 rounded bg-white drop-shadow-xl">
+      <div className="m-20 p-8 rounded bg-white drop-shadow-xl text-center">
+        <div>
         <h4 className="underline font-bold text-blue-600">Saved this week:</h4>
         <span>
           {weekSaved > 0 ? (
@@ -168,9 +149,10 @@ function App() {
             <span>Enter your number above!</span>
           )}
         </span>
+        </div>
       </div>
 
-      <div className="flex items-center flex-col my-12 p-8 rounded bg-white drop-shadow-xl">
+      <div className="m-20 p-8 rounded bg-white drop-shadow-xl text-center">
         <h4 className="underline font-bold text-blue-600">Weekly remainder:</h4>
         <span>
           {weeklyRemainder >= 1 && <span>{`$${weeklyRemainder}`}</span>}
@@ -179,13 +161,16 @@ function App() {
         </span>
       </div>
 
-      <div className="flex items-center flex-col mb-12 p-8 rounded bg-white drop-shadow-xl">
+      <div className="m-20 p-8 rounded bg-white drop-shadow-xl text-center">
         <h2 className="underline font-bold text-blue-600">Lattes saved:</h2>
         {latteArr.length > 0 ? (
           <span>{listLattes}</span>
         ) : (
           <p>Hmm, no lattes yet!</p>
         )}
+      </div>
+      <div className="text-center pb-2">
+          <span>LottaLattes ©</span>
       </div>
     </div>
   )
