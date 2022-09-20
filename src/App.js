@@ -81,29 +81,29 @@ function App() {
         <h3>(Because coffee ain't cheap)</h3>
       </div>
 
-      <div className="flex items-center flex-col sm:flex-row sm:justify-evenly sm:mx-32">
-        <div className="mt-4 sm:m-4 md:m-8 lg:m-12 p-8 rounded bg-white drop-shadow-xl text-center">
+      <div className="grid md:grid-cols-2 items-center md:mx-32">
+        <>
           {!goal && (
+          <div className="mt-4 sm:m-4 md:m-8 lg:m-12 p-8 rounded bg-white drop-shadow-xl text-center">
             <SetGoalComp 
               onChange={handleAmountChange}
               onClick={setGoalFunction}
             />
+          </div>
           )}
           {goal && (
-            <>
+            <div className="mt-4 sm:m-4 md:m-8 lg:m-12 p-8 md:h-2/3 rounded bg-white drop-shadow-xl text-center">
               <h3 className="underline font-bold text-blue-600">GOAL:</h3>
               <span>
                 <strong>${goal}</strong>
               </span>{" "}
               <br />
-            </>
+              <ChangeGoalComp 
+                onClick={handleGoalChange}
+              />
+            </div>
           )}
-          {goal && (
-            <ChangeGoalComp 
-              onClick={handleGoalChange}
-            />
-          )}
-        </div>
+        </>
 
         <div className="mt-4 sm:m-4 md:m-8 lg:m-12 p-8 rounded bg-white drop-shadow-xl text-center">
           <FormControl>
@@ -169,6 +169,7 @@ function App() {
           <p>Hmm, no lattes yet!</p>
         )}
       </div>
+
       <div className="text-center pb-2">
           <span>LottaLattes ©</span>
       </div>
