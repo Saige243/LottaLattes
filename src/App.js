@@ -133,13 +133,14 @@ function App() {
         </div>
       </div>
 
-        <div className="flex justify-center items-center flex-col my-12 p-8 rounded bg-white drop-shadow-xl w-1/2">
-          <h2 className="underline font-bold text-blue-600">POUROVER:</h2>
-          <h4>(Any $ over your goal)</h4>
-          {!pourover ? <span>🫡 Keep saving!🫡</span> : <p>{`$${pourover}`}</p>}
-        </div>
+      <div className="m-20 p-8 rounded bg-white drop-shadow-xl text-center">
+        <h2 className="underline font-bold text-blue-600">POUROVER:</h2>
+        <h4>(Any $ over your goal)</h4>
+        {!pourover ? <span>🫡 Keep saving!🫡</span> : <p>{`$${pourover}`}</p>}
+      </div>
 
-      <div className="flex items-center flex-col my-12 p-8 rounded bg-white drop-shadow-xl">
+      <div className="m-20 p-8 rounded bg-white drop-shadow-xl text-center">
+        <div>
         <h4 className="underline font-bold text-blue-600">Saved this week:</h4>
         <span>
           {weekSaved > 0 ? (
@@ -148,9 +149,10 @@ function App() {
             <span>Enter your number above!</span>
           )}
         </span>
+        </div>
       </div>
 
-      <div className="flex items-center flex-col my-12 p-8 rounded bg-white drop-shadow-xl">
+      <div className="m-20 p-8 rounded bg-white drop-shadow-xl text-center">
         <h4 className="underline font-bold text-blue-600">Weekly remainder:</h4>
         <span>
           {weeklyRemainder >= 1 && <span>{`$${weeklyRemainder}`}</span>}
@@ -159,7 +161,7 @@ function App() {
         </span>
       </div>
 
-      <div className="flex items-center flex-col mb-12 p-8 rounded bg-white drop-shadow-xl">
+      <div className="m-20 p-8 rounded bg-white drop-shadow-xl text-center">
         <h2 className="underline font-bold text-blue-600">Lattes saved:</h2>
         {latteArr.length > 0 ? (
           <span>{listLattes}</span>
