@@ -18,9 +18,9 @@ function App() {
   const [weeklyRemainder, setWeeklyRemainder] = useState(0)
   const [savedTodayInput, setSavedTodayInput] = useState()
 
-  const listLattes = latteArr.map(() => (
+  const listLattes = latteArr.map((latte) => (
     <span>
-      <LocalDrinkIcon />
+      <LocalDrinkIcon key={latte.id}/>
     </span>
   ))
 
@@ -70,7 +70,6 @@ function App() {
     if (latteArr.length !== totes) {
       for (let i = 0; i <= totes; i++) {
         setLatteArr([...latteArr, <LocalDrinkIcon />])
-        console.log("loaded")
       }
     }
   }, [weekSaved, latteArr])
