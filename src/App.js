@@ -4,6 +4,8 @@ import FormControl from "@mui/material/FormControl"
 import Button from "@mui/material/Button"
 import LocalDrinkIcon from "@mui/icons-material/LocalDrink"
 import { useState, useEffect } from "react"
+import SetGoalComp from "./components/setGoalComp"
+import ChangeGoalComp from "./components/changeGoalComp"
 
 function App() {
   const [goal, setGoal] = useState("")
@@ -21,6 +23,10 @@ function App() {
       <LocalDrinkIcon />
     </span>
   ))
+
+  const handleAmountChange = (e) => {
+    setAmount(e.target.value)
+  }
 
   const setGoalFunction = () => {
     setGoal(amount)
@@ -79,29 +85,10 @@ function App() {
       <div className="flex items-center flex-col sm:flex-row sm:justify-evenly sm:mx-32">
         <div className="mt-4 sm:m-4 md:m-8 lg:m-12 p-8 rounded bg-white drop-shadow-xl text-center">
           {!goal && (
-            <>
-              <h2 className="underline text-blue-600 font-bold m-2">WEEKLY GOAL:</h2>
-              <FormControl>
-                <TextField
-                  id="outlined-multiline-flexible"
-                  label="Goal"
-                  multiline
-                  size="medium"
-                  maxRows={8}
-                  onChange={(e) => setAmount(e.target.value)}
-                />
-                <Button
-                  sx={{
-                    marginTop: 1,
-                  }}
-                  size="small"
-                  variant="outlined"
-                  onClick={setGoalFunction}
-                >
-                  Set Goal
-                </Button>
-              </FormControl>
-            </>
+            <SetGoalComp 
+              onChange={handleAmountChange}
+              onClick={setGoalFunction}
+            />
           )}
           {goal && (
             <>
@@ -113,17 +100,9 @@ function App() {
             </>
           )}
           {goal && (
-            <Button
-              sx={{
-                marginTop: 1,
-              }}
-              size="small"
-              variant="outlined"
+            <ChangeGoalComp 
               onClick={handleGoalChange}
-              className="text-blue-600"
-            >
-              Change Goal
-            </Button>
+            />
           )}
         </div>
 
