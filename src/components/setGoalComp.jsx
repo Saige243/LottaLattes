@@ -5,7 +5,7 @@ import Button from "@mui/material/Button"
 
 function setGoalComp(props) {
   return (
-    <div className="text-center mt-4 sm:m-4 md:m-8 lg:m-12">
+    <>
       <h2 className="underline text-blue-600 font-bold m-2">WEEKLY GOAL:</h2>
       <FormControl>
         <TextField
@@ -27,7 +27,7 @@ function setGoalComp(props) {
           Set Goal
         </Button>
       </FormControl>
-    </div>
+    </>
   )
 }
 

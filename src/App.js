@@ -107,7 +107,9 @@ function App() {
 
         <div className="mt-4 sm:m-4 md:m-8 lg:m-12 p-8 rounded bg-white drop-shadow-xl text-center">
           <FormControl>
-            <h2 className="m-2 underline font-bold text-blue-600">SAVED TODAY:</h2>
+            <h2 className="m-2 underline font-bold text-blue-600">
+              SAVED TODAY:
+            </h2>
             <TextField
               id="outlined-multiline-flexible"
               label="Amount saved"
